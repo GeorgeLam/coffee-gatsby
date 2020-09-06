@@ -595,3 +595,38 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background-color: lawngreen; */
+  /* background-color: lemonchiffon; */
+}
+.content {
+  flex-grow: 1;
+  /* background-color: lemonchiffon; */
+}
+footer {
+  margin: 0 auto;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+}
+li {
+  /* color: white; */
+  text-decoration: none;
+  margin: 0em 2em 0em 0em;
+  list-style: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: #c0c0c0;
+}
+* {
+  color: black;
+}
