@@ -1,6 +1,7 @@
 ---
 title: "Coffee habits"
 date: "2020-09-04"
+slug: "coffee"
 ---
 
 Drinking too much coffee these days...

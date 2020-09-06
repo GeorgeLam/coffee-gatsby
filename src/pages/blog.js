@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import BlogStyles from "../styles/blog.module.css"
@@ -14,14 +14,24 @@ const Blog = () => {
           frontmatter {
             date
             title
+            slug
           }
           html
           excerpt
+        }
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
         }
       }
     }
   `)
   console.log(postsData)
+
+  //   console.log(testP)
 
   return (
     <div>
@@ -31,10 +41,14 @@ const Blog = () => {
           {/* {postsData.allMarkdownRemark.nodes[0].frontmatter.title} */}
           {postsData &&
             postsData.allMarkdownRemark.nodes.map(node => (
-              <li>
-                <h6>{node.frontmatter.title}</h6>
+              <li key={node.frontmatter.slug}>
+                <h6>
+                  <Link className="blogLink" to={"/" + node.frontmatter.slug}>
+                    {" "}
+                    {node.frontmatter.title}
+                  </Link>
+                </h6>
                 <p>{node.frontmatter.date}</p>
-                <p dangerouslySetInnerHTML={{ __html: node.html }}></p>
               </li>
             ))}
         </ul>

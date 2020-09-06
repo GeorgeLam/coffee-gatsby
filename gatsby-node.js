@@ -1,4 +1,5 @@
 const path = require("path")
+const { useStaticQuery } = require("gatsby")
 
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
@@ -17,15 +18,30 @@ module.exports.onCreateNode = ({ node, actions }) => {
 
 module.exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
+  const blogPath = path.resolve("./src/pages/blogPost.js")
 
-  const blogPath = path.resolve("./src/pages/blog.js")
-  const res = await graphql(query`
-        allMarkdownRemark{
-            node{
-                fields{
-                    slug
-                }
+  const res = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
             }
+          }
         }
-    `)
+      }
+    }
+  `)
+
+  res.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    // console.log(node)
+    createPage({
+      path: node.fields.slug,
+      component: blogPath,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
 }

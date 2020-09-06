@@ -621,12 +621,12 @@ li {
   list-style: none;
 }
 a {
-  color: white;
+  /* color: white; */
   text-decoration: none;
 }
-a:hover {
-  color: #c0c0c0;
+.blogLink {
+  color: #0110df;
 }
-* {
+/* * {
   color: black;
-}
+} */
