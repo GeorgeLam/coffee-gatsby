@@ -9,22 +9,13 @@ const Blog = () => {
 
   let postsData = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allContentfulContentfulBlogPost(
+        filter: { node_locale: { eq: "en-US" } }
+      ) {
         nodes {
-          frontmatter {
-            date
-            title
-            slug
-          }
-          html
-          excerpt
-        }
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
+          date(formatString: "MMMM D, YYYY")
+          title
+          slug
         }
       }
     }
@@ -40,15 +31,15 @@ const Blog = () => {
         <ul>
           {/* {postsData.allMarkdownRemark.nodes[0].frontmatter.title} */}
           {postsData &&
-            postsData.allMarkdownRemark.nodes.map(node => (
-              <li key={node.frontmatter.slug}>
+            postsData.allContentfulContentfulBlogPost.nodes.map(node => (
+              <li key={node.title}>
                 <h6>
-                  <Link className="blogLink" to={"/" + node.frontmatter.slug}>
+                  <Link className="blogLink" to={"/" + node.slug}>
                     {" "}
-                    {node.frontmatter.title}
+                    {node.title}
                   </Link>
                 </h6>
-                <p>{node.frontmatter.date}</p>
+                <p>{node.date}</p>
               </li>
             ))}
         </ul>

@@ -1,20 +1,20 @@
 const path = require("path")
 const { useStaticQuery } = require("gatsby")
 
-module.exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions
+// module.exports.onCreateNode = ({ node, actions }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = path.basename(node.fileAbsolutePath, ".md")
-    // console.log(JSON.stringify(node), undefined, 4)
-    console.log("!!!!!!!!!!!!", slug)
-    createNodeField({
-      node,
-      name: "slug",
-      value: slug,
-    })
-  }
-}
+//   if (node.internal.type === "MarkdownRemark") {
+//     const slug = path.basename(node.fileAbsolutePath, ".md")
+//     // console.log(JSON.stringify(node), undefined, 4)
+//     console.log("!!!!!!!!!!!!", slug)
+//     createNodeField({
+//       node,
+//       name: "slug",
+//       value: slug,
+//     })
+//   }
+// }
 
 module.exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -22,11 +22,16 @@ module.exports.createPages = async ({ actions, graphql }) => {
 
   const res = await graphql(`
     query {
-      allMarkdownRemark {
+      allContentfulContentfulBlogPost(
+        filter: { node_locale: { eq: "en-US" } }
+      ) {
         edges {
           node {
-            fields {
-              slug
+            date(formatString: "MMMM D, YYYY")
+            title
+            slug
+            body {
+              body
             }
           }
         }
@@ -34,13 +39,13 @@ module.exports.createPages = async ({ actions, graphql }) => {
     }
   `)
 
-  res.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    // console.log(node)
+  res.data.allContentfulContentfulBlogPost.edges.forEach(({ node }) => {
+    console.log("!!!!!!!!!!", node)
     createPage({
-      path: node.fields.slug,
+      path: node.slug,
       component: blogPath,
       context: {
-        slug: node.fields.slug,
+        slug: node.slug,
       },
     })
   })
