@@ -1,22 +1,63 @@
 import React from "react"
 import { Link } from "gatsby"
-
-import Layout from "../components/layout"
 import Image from "../components/image"
-import SEO from "../components/seo"
+import { makeStyles } from "@material-ui/core/styles"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+import {
+  Container,
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Grid,
+} from "@material-ui/core/"
+
+import MenuIcon from "@material-ui/icons/Menu"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}))
+
+const IndexPage = () => {
+  const classes = useStyles()
+
+  return (
+    <div>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Coffeeshop
+          </Typography>
+
+          <Button>
+            <Link to="/blog">Blog</Link>
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <div>
+        <Grid item xs={12}>
+          <Image />{" "}
+        </Grid>
+      </div>
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+  )
+}
 
 export default IndexPage
