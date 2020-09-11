@@ -1,48 +1,35 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Header from "./header"
-// import "./layout.css"
+import LayoutStyles from "../styles/layout.module.css"
+// import "../styles/blog.module.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <div className="container">
-      <div className="content">
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0 1.0875rem 1.45rem`,
-          }}
-        >
-          <main>{children}</main>
-        </div>
+    <div className={LayoutStyles.allContent}>
+      <div className={LayoutStyles.mainContent}>
+        <nav>
+          <div className={LayoutStyles.logo}>Coffee!</div>
+          <div className={LayoutStyles.links}>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <>{children}</>
       </div>
+
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a className="gatsbyLink" href="https://www.gatsbyjs.org">
-          Gatsby
-        </a>
+        <span>
+          <a href="https://georgelam.dev">George Lam</a> - 2020
+        </span>
       </footer>
     </div>
   )

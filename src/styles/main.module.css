@@ -1,52 +1,8 @@
-nav,
-footer {
-  width: 100%;
-  margin: 0 auto;
+.menuItem {
+  font-weight: 600;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  padding: 0.5em 10%;
-  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
-}
-
-nav ul {
-  display: flex;
-  flex-direction: row;
-  /* width: 20%; */
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-nav li {
-  margin: 0 1em;
-  font-size: 1.2em;
-}
-
-.logo {
-  font-size: 2em;
-  flex: 1;
-}
-
-footer {
-  text-align: center;
-  border-top: 1px solid rgba(1, 1, 1, 0.2);
-  padding: 1em;
-  /* position: absolute;
-  bottom: 0px;
-  left: 10%; */
-  /* flex-shrink: 0; */
-}
-
-.allContent {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: rgb(253 249 235);
-}
-
-.mainContent {
-  flex: 1;
+.imageContainer {
+  /* height: 200px; */
+  /* width: 200px; */
 }

@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Lay from "../components/Lay"
+import Layout from "../components/Layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -28,7 +28,7 @@ export default function BlogPost({ data }) {
     // <p>{post.date}</p>
     // {documentToReactComponents(post.body.json, options)}
     // {/* <p dangerouslySetInnerHTML={{ __html: post.body.body }}></p> */}
-    <Lay>
+    <Layout>
       <div className={BlogStyles.mainContain}>
         <section>
           <h1 className={BlogStyles.text}>{post.title}</h1>
@@ -38,7 +38,7 @@ export default function BlogPost({ data }) {
           </div>
         </section>
       </div>
-    </Lay>
+    </Layout>
   )
 }
 

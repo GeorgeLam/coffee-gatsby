@@ -1,62 +1,57 @@
 import React from "react"
 import { Link } from "gatsby"
 import Image from "../components/image"
-import { makeStyles } from "@material-ui/core/styles"
+import Layout from "../components/Layout"
+import MainStyles from "../styles/main.module.css"
 
-import {
-  Container,
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  Grid,
-} from "@material-ui/core/"
-
-import MenuIcon from "@material-ui/icons/Menu"
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}))
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const IndexPage = () => {
-  const classes = useStyles()
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "cafe.jpg" }) {
+        childImageSharp {
+          resolutions {
+            height
+          }
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
 
   return (
-    <div>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Coffeeshop
-          </Typography>
-
-          <Button>
-            <Link to="/blog">Blog</Link>
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <div>
-        <Grid item xs={12}>
-          <Image />{" "}
-        </Grid>
+    <Layout>
+      <div className={MainStyles.imageContainer}>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          style={{ maxHeight: "calc(50vh - 4rem)" }}
+          imgStyle={{ objectFit: "contain" }}
+        />
       </div>
-    </div>
+
+      <section>
+        <h2>Our Menu</h2>
+        <ul>
+          <li>
+            <span className={MainStyles.menuItem}>Latte</span> - £3.95
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span className={MainStyles.menuItem}>Mocha</span> - £4.15
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span className={MainStyles.menuItem}>Americano</span> - £1.95
+          </li>
+        </ul>
+      </section>
+    </Layout>
   )
 }
 

@@ -5,7 +5,7 @@ import Truncate from "react-truncate"
 
 // import Layout from "../components/layout"
 import BlogStyles from "../styles/blog.module.css"
-import Lay from "../components/Lay"
+import Layout from "../components/Layout"
 
 const Blog = () => {
   const [skipping, setSkipping] = useState(0)
@@ -57,14 +57,14 @@ const Blog = () => {
   }
 
   return (
-    <Lay>
+    <Layout>
       <div className={BlogStyles.mainContain}>
         <section>
           <h1 className={BlogStyles.text}>Recent blog posts</h1>
           <p className={BlogStyles.postCount}>
-            Displaying {skipping + 1} -{" "}
+            Displaying {skipping + 1}-
             {skipping + 3 > totalCount ? totalCount : skipping + 3} of{" "}
-            {totalCount}
+            {totalCount} posts
           </p>
           <ul className={BlogStyles.gridContainer}>
             {postsData.allContentfulContentfulBlogPost.nodes
@@ -87,6 +87,8 @@ const Blog = () => {
                 </li>
               ))}
           </ul>
+        </section>
+        <div className={BlogStyles.postNav}>
           {skipping < totalCount - 3 && (
             <span>
               <a className={BlogStyles.postNav} onClick={earlierPosts} href="">
@@ -101,9 +103,9 @@ const Blog = () => {
               </a>
             </span>
           )}
-        </section>
+        </div>
       </div>
-    </Lay>
+    </Layout>
   )
 }
 
