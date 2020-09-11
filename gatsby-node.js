@@ -40,7 +40,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
   `)
 
   res.data.allContentfulContentfulBlogPost.edges.forEach(({ node }) => {
-    console.log("!!!!!!!!!!", node)
+    // console.log("!!!!!!!!!!", node)
     createPage({
       path: node.slug,
       component: blogPath,

@@ -1,3 +1,105 @@
-.text{
-    color: red;
+* {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.mainContain {
+  /* background-color: #0093e9; */
+  /* background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%); */
+  /* height: 100vh; */
+  z-index: 1;
+}
+
+section {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1em;
+  width: 80vw;
+  /* height: 100vh; */
+  z-index: 2;
+  /* background-color: rgba(249, 249, 249, 1); */
+}
+
+.postCount,
+ul li {
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-size: 2.5em;
+  padding-bottom: 0.2em;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+.text,
+a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+li {
+  /* color: white; */
+  text-decoration: none;
+  margin: 0em 0em 0em 0em;
+  list-style: none;
+}
+
+.dateLine {
+  margin-bottom: 0.5em;
+  font-style: oblique;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 1);
+  text-decoration: underline;
+}
+
+.blogLink {
+  color: #0110df;
+}
+
+.gridContainer {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2em 2em;
+  grid-template-areas:
+    ". .  "
+    ". .  "
+    ". . "; */
+  display: flex;
+  flex-direction: column;
+}
+
+/* .mainText {
+  text-align: left;
+} */
+
+hr {
+  width: 40%;
+}
+
+hr,
+img {
+  margin: 1em auto;
+}
+
+.postNav {
+  margin: 0 1em;
+}
+
+.back {
+  font-size: 0.8em;
 }
