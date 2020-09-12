@@ -20,7 +20,7 @@ nav ul {
   align-items: center;
 }
 
-nav li {
+nav ul li {
   margin: 0 1em;
   font-size: 1.2em;
 }
@@ -49,4 +49,8 @@ footer {
 
 .mainContent {
   flex: 1;
+}
+
+.portfolio {
+  text-decoration: underline;
 }

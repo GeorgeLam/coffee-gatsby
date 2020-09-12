@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .menuItem {
   font-weight: 600;
 }
@@ -5,4 +9,203 @@
 .imageContainer {
   /* height: 200px; */
   /* width: 200px; */
+  position: relative;
+}
+
+.heroText {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.3em;
+  font-family: "Noto Sans JP", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroTextBox {
+  margin-top: 5%;
+}
+
+.heroText h1 {
+  /* margin-bottom: 30%; */
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.4); */
+  font-size: 2em;
+  text-align: center;
+}
+
+.heroText h2 {
+  /* padding-top: 0.2em; */
+  font-style: oblique;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.heroText button {
+  margin: 2em 0;
+  background-color: rgb(33, 171, 235);
+  border: 0;
+  padding: 0.6em 1.5em;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.buttonDiv {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.heroText button:hover {
+  background-color: rgb(24, 147, 204);
+}
+
+.storyTitle {
+  padding-top: 0.2em;
+  padding-bottom: 0em;
+}
+
+.storyText {
+  width: 70%;
+  margin: 1em auto;
+}
+
+.photoGrid {
+  margin: 3em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 2em;
+  grid-template-areas: ". . .";
+}
+
+.gridItem {
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 300px;
+  /* background: gray; */
+  position: relative;
+  margin: 3em 0 5em;
+}
+
+.wrapper h1 {
+  text-align: center;
+}
+
+.backgroundShape {
+  background: rgb(90, 71, 41);
+  width: 100%;
+  height: 350px;
+  -ms-transform: skewY(-10deg);
+  -webkit-transform: skewY(-10deg);
+  transform: skewY(-10deg);
+  /* border-radius: 30px; */
+  position: absolute;
+  top: 0px;
+  /* left: 50px; */
+}
+.content {
+  color: white;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  text-align: center;
+}
+
+.menuContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.menuTitle {
+  text-align: center;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+  width: 35%;
+  margin: 0.2em auto;
+}
+
+.menuLeft,
+.menuRight {
+  flex: 1 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  padding: 0.8em 2em;
+}
+
+.form input,
+.form textarea {
+  margin: 0.2em 0;
+}
+
+.form textarea {
+  height: 6em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form button {
+  width: 30%;
+  /* margin-left: auto; */
+  margin-top: 1em;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2em;
+  }
+  .heroText h1 {
+    font-size: 1.5em;
+  }
+  .heroText h2 {
+    font-size: 1em;
+  }
+  .heroTextBox button {
+    margin: 1em 0;
+    padding: 0.5em 0.8em;
+  }
+  .photoGrid {
+    margin: 3em 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .storyText,
+  .menuContainer h1 {
+    width: 100%;
+  }
+  .menuContainer {
+    width: 90%;
+  }
+  .menuTitle {
+    width: 80%;
+  }
+  .form {
+    width: 100%;
+    padding: 1em;
+  }
 }

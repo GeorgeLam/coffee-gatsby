@@ -28,7 +28,10 @@ const Layout = ({ children }) => {
 
       <footer>
         <span>
-          <a href="https://georgelam.dev">George Lam</a> - 2020
+          <a className={LayoutStyles.portfolio} href="https://georgelam.dev">
+            George Lam
+          </a>{" "}
+          - 2020
         </span>
       </footer>
     </div>
