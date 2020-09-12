@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link } from "gatsby"
 import Image from "../components/image"
 import Layout from "../components/Layout"
+import Map from "../components/Map"
 import MainStyles from "../styles/main.module.css"
 
 import { useStaticQuery, graphql } from "gatsby"
@@ -58,24 +59,24 @@ const IndexPage = () => {
             height
           }
           fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
+            ...GatsbyImageSharpFluid
           }
         }
       }
 
-      allFile(filter: { relativeDirectory: { eq: "images/gallery" } }) {
+      allFile(filter: { relativeDirectory: { in: "gallery" } }) {
         nodes {
           absolutePath
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid_tracedSVG
+              ...GatsbyImageSharpFluid
             }
           }
         }
       }
     }
   `)
-  // console.log(data)
+  console.log(data)
 
   return (
     <Layout>
@@ -169,6 +170,29 @@ const IndexPage = () => {
       </div>
 
       <section>
+        <h1>Find Us</h1>
+        <div className={MainStyles.mapContainer}>
+          <Map
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBg3enMEKqL5KGiCuAazG9_tyG8xWSSCE&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={
+              <div style={{ height: `400px`, margin: "0 0 2em" }} />
+            }
+            mapElement={<div style={{ height: `100%` }} />}
+          />
+          <div className={MainStyles.location}>
+            <p>
+              <strong>Better Latte</strong>
+            </p>
+            <p>
+              12 Bologna Street
+              <br />
+              Marylebone, <br />
+              London, UK
+            </p>
+          </div>
+        </div>
+
         <h1>Contact us!</h1>
         <form className={MainStyles.form}>
           <input type="text" placeholder="Your name..." ref={nameRef}></input>

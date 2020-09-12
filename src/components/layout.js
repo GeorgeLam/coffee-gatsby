@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     <div className={LayoutStyles.allContent}>
       <div className={LayoutStyles.mainContent}>
         <nav>
-          <div className={LayoutStyles.logo}>Coffee!</div>
+          <div className={LayoutStyles.logo}>Better Latte</div>
           <div className={LayoutStyles.links}>
             <ul>
               <li>

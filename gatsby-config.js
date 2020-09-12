@@ -68,6 +68,21 @@ module.exports = {
         accessToken: process.env.ACCESS,
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Poppins`,
+            variants: [`300`, `400i`, `400`, `500i`],
+          },
+          {
+            family: `Noto Sans JP`,
+            variants: [`300`, `400`],
+          },
+        ],
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
