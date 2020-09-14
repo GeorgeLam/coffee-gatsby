@@ -79,9 +79,9 @@ a:hover {
   flex-direction: column;
 }
 
-/* .mainText {
-  text-align: left;
-} */
+.mainText p {
+  margin: 1.5em;
+}
 
 hr {
   width: 40%;
@@ -103,4 +103,17 @@ section {
 
 .back {
   font-size: 0.8em;
+}
+
+.mainContain img {
+  max-height: 400px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+@media (min-width: 500px) {
+  .mainText p {
+    width: 40vw;
+    margin: 1.5em auto;
+  }
 }

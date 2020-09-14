@@ -78,7 +78,7 @@ const Blog = () => {
                     </Link>
                   </h2>
                   <p className={BlogStyles.dateLine}>{node.date}</p>
-                  <Truncate lines={3} width={500} ellipsis="&hellip;">
+                  <Truncate lines={2} width={500} ellipsis="&hellip;">
                     {documentToReactComponents(
                       node.childContentfulContentfulBlogPostBodyRichTextNode
                         .json
