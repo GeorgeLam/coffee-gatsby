@@ -19,9 +19,30 @@ const { useStaticQuery } = require("gatsby")
 module.exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
   const blogPath = path.resolve("./src/pages/blogPost.js")
+  const storePath = path.resolve("./src/pages/productPage.js")
 
   const res = await graphql(`
-    query {
+    query   {
+      allContentfulProduct(
+            filter: { node_locale: { eq: "en-US" } }
+  ) {
+        edges{
+      node{
+        description {
+          description
+        }
+        price
+        productTitle
+        image {
+          id
+          fluid(maxWidth: 500) {
+            src
+          }
+        }
+        slug
+      }
+    }
+      }
       allContentfulContentfulBlogPost(
         filter: { node_locale: { eq: "en-US" } }
       ) {
@@ -38,6 +59,18 @@ module.exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+
+
+   res.data.allContentfulProduct.edges.forEach(({ node }) => {
+    // console.log("!!!!!!!!!!", node)
+    createPage({
+      path: node.slug,
+      component: storePath,
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
 
   res.data.allContentfulContentfulBlogPost.edges.forEach(({ node }) => {
     // console.log("!!!!!!!!!!", node)

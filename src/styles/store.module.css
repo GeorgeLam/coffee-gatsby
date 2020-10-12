@@ -1,0 +1,16 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2em;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  text-align: center;
+  width: 80%;
+  margin: 2em auto;
+}
+
+.product {
+  display: inline-block !important;
+}

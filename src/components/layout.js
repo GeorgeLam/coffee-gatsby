@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, Link } from "gatsby"
+
 import { Helmet } from "react-helmet"
 
 import Header from "./header"
@@ -23,6 +24,9 @@ const Layout = ({ children }) => {
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>
+                </li>
+                <li>
+                  <Link to="/store">Store</Link>
                 </li>
               </ul>
             </div>
