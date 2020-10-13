@@ -19,15 +19,15 @@ const { useStaticQuery } = require("gatsby")
 module.exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
   const blogPath = path.resolve("./src/pages/blogPost.js")
-  const storePath = path.resolve("./src/pages/productPage.js")
+  const storePath = path.resolve("./src/pages/store.js")
+  const productPath = path.resolve("./src/pages/productPage.js")
 
   const res = await graphql(`
-    query   {
-      allContentfulProduct(
-            filter: { node_locale: { eq: "en-US" } }
-  ) {
-        edges{
-      node{
+  query {
+  allContentfulProduct(filter: {node_locale: {eq: "en-US"}}) {
+    edges {
+      node {
+        category
         description {
           description
         }
@@ -42,36 +42,50 @@ module.exports.createPages = async ({ actions, graphql }) => {
         slug
       }
     }
-      }
-      allContentfulContentfulBlogPost(
-        filter: { node_locale: { eq: "en-US" } }
-      ) {
-        edges {
-          node {
-            date(formatString: "MMMM D, YYYY")
-            title
-            slug
-            body {
-              body
-            }
-          }
+    nodes {
+      category
+    }
+  }
+  allContentfulContentfulBlogPost(filter: {node_locale: {eq: "en-US"}}) {
+    edges {
+      node {
+        date(formatString: "MMMM D, YYYY")
+        title
+        slug
+        body {
+          body
         }
       }
     }
+  }
+}
   `)
 
-
+//Page for each product
    res.data.allContentfulProduct.edges.forEach(({ node }) => {
     // console.log("!!!!!!!!!!", node)
     createPage({
       path: node.slug,
-      component: storePath,
+      component: productPath,
       context: {
         slug: node.slug,
       },
     })
   })
 
+  //Page for each product category
+   res.data.allContentfulProduct.nodes.forEach(({ category }) => {
+    console.log("!!!!!!!!!!", category)
+    createPage({
+      path: category,
+      component: storePath,
+      context: {
+        category: `/${category}/`,
+      },
+    })
+  })
+
+  //Page for each blog post
   res.data.allContentfulContentfulBlogPost.edges.forEach(({ node }) => {
     // console.log("!!!!!!!!!!", node)
     createPage({

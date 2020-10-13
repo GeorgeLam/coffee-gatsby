@@ -12,6 +12,14 @@ import StoreStyles from "../styles/store.module.css"
 
 export default function Store({ data }) {
   console.log(data)
+
+  const categories = [
+    {name: "all", url: "./store"},
+    {name: "coffee", url: "./coffee"},
+    {name: "food", url: "./food"},
+    {name: "accessories", url: "./accessories"},
+  ]
+
   // const post = node
   const options = {
     renderNode: {
@@ -41,7 +49,18 @@ export default function Store({ data }) {
         </Helmet>
 
 
+
+<div className={StoreStyles.container}>
+
+<div className={StoreStyles.categories}>
+    {categories.map(category => (
+      <li className={StoreStyles.category}><Link to={`/${category.url}`}>{category.name}</Link></li>
+    ))}
+</div>
+
+
 <div class={StoreStyles.gridContainer}>
+
 {data.allContentfulProduct.nodes.map(node => 
 (
  <div className={StoreStyles.product}>
@@ -65,31 +84,35 @@ export default function Store({ data }) {
 )
 )}
 </div>
+</div>
+
     
     </Layout>
   )
 }
 
 export const query = graphql`
- query  {
-  allContentfulProduct (
-    filter: { node_locale: { eq: "en-US" } }
-  )
-  {
-  nodes{
-    description {
-      description
-    }
-    price
-    productTitle
-    image {
-      id
-      fluid(maxWidth: 500) {
-        src
+query ($category: String) {
+  allContentfulProduct(filter: {node_locale: {eq: "en-US"}, category: {regex: $category}}) {
+    nodes {
+      description {
+        description
       }
+      price
+      productTitle
+      image {
+        id
+        fluid(maxWidth: 500) {
+          src
+        }
+      }
+      slug
+      category
     }
-    slug
-  }
+    group(field: category) {
+      fieldValue
+    }
   }
 }
+
 `
