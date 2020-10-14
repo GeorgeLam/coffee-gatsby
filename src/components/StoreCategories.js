@@ -1,33 +1,24 @@
 import React from "react"
-import { graphql, StaticQuery, useStaticQuery } from "gatsby"
+import { Link, graphql } from "gatsby"
+import StoreStyles from "../styles/store.module.css"
 
 const StoreCategories = ({ data }) => {
   console.log(data)
 
+
+  const categories = [
+    {name: "all", url: "./"},
+    {name: "coffee", url: "./coffee"},
+    {name: "food", url: "./food"},
+    {name: "accessories", url: "./accessories"},
+  ]
+
   return (
-    <>
-    <StaticQuery
-    query={
-      graphql`
-  {
-  allContentfulProduct {
-    nodes {
-      category
-    }
-  }
-}
-
-`
-    }
-        render={data => [...new Set(data.allContentfulProduct.nodes)].map(node => (
-          <li>{node.category}</li>
-        ))}
-
-    />
-    <ul>
-  
-    </ul>
-    </>
+   <div className={StoreStyles.categories}>
+    {categories.map(category => (
+      <li className={StoreStyles.category}><Link to={`/store/${category.url}`}>{category.name}</Link></li>
+    ))}
+  </div>
   )
 }
 

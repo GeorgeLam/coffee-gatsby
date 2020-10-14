@@ -8,7 +8,9 @@ import SEO from "../components/seo"
 
 import { Helmet } from "react-helmet"
 
-import BlogStyles from "../styles/blog.module.css"
+import StoreStyles from "../styles/store.module.css"
+import StoreCategories from "../components/StoreCategories"
+
 
 export default function Store({ data }) {
   console.log(data)
@@ -40,13 +42,19 @@ export default function Store({ data }) {
 
         </Helmet>
 
-     
+<div className={StoreStyles.container}>
 
-     <section>
+     <StoreCategories/>
+
+
+     <section className={StoreStyles.productContainer}>
+       <div className={StoreStyles.left}>
+        <img className={StoreStyles.productImg} src={data.contentfulProduct.image.fluid.src}></img>
+       </div>
+       <div className={StoreStyles.right}>
   <h2>{data.contentfulProduct.productTitle}</h2>
   <p>{`£${data.contentfulProduct.price}`}</p>
   <p>{data.contentfulProduct.description.description}</p>
-  <img src={data.contentfulProduct.image.fluid.src}></img>
   <br/>
   <button
     class="snipcart-add-item"
@@ -56,10 +64,15 @@ export default function Store({ data }) {
     data-item-name={data.contentfulProduct.productTitle}
     data-item-image={data.contentfulProduct.image.fluid.src}
     data-item-description={data.contentfulProduct.description.description}
+    style={{width: "50%", 
+    margin: "0 auto"}}
   >
     Add to cart
   </button>
+  </div>
 </section>
+
+</div>
     </Layout>
   )
 }

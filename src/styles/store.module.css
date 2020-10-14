@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 2em;
 }
 
 .category {
@@ -25,5 +26,37 @@
 }
 
 .product {
-  display: inline-block !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.addToCart {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left,
+.right {
+  width: 100%;
+}
+
+.productImg {
+  max-width: 70%;
+}
+
+@media (max-width: 500px) {
+  .gridContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productContainer {
+    flex-direction: column;
+  }
 }

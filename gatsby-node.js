@@ -65,7 +65,7 @@ module.exports.createPages = async ({ actions, graphql }) => {
    res.data.allContentfulProduct.edges.forEach(({ node }) => {
     // console.log("!!!!!!!!!!", node)
     createPage({
-      path: node.slug,
+      path: `/store/${node.slug}`,
       component: productPath,
       context: {
         slug: node.slug,
@@ -75,9 +75,9 @@ module.exports.createPages = async ({ actions, graphql }) => {
 
   //Page for each product category
    res.data.allContentfulProduct.nodes.forEach(({ category }) => {
-    console.log("!!!!!!!!!!", category)
+    // console.log("!!!!!!!!!!", category)
     createPage({
-      path: category,
+      path: `/store/${category}`,
       component: storePath,
       context: {
         category: `/${category}/`,
