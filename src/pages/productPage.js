@@ -1,10 +1,8 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import BuyButton from "../components/BuyButton"
 
 import { Helmet } from "react-helmet"
 
@@ -56,19 +54,9 @@ export default function Store({ data }) {
   <p>{`£${data.contentfulProduct.price}`}</p>
   <p>{data.contentfulProduct.description.description}</p>
   <br/>
-  <button
-    class="snipcart-add-item"
-    data-item-id={data.contentfulProduct.slug}
-    data-item-price={  data.contentfulProduct.price}
-    data-item-url={`/products/${data.contentfulProduct.slug}`}
-    data-item-name={data.contentfulProduct.productTitle}
-    data-item-image={data.contentfulProduct.image.fluid.src}
-    data-item-description={data.contentfulProduct.description.description}
-    style={{width: "50%", 
-    margin: "0 auto"}}
-  >
-    Add to cart
-  </button>
+
+  <BuyButton node={data.contentfulProduct}/>
+
   </div>
 </section>
 
